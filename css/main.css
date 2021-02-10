@@ -2,6 +2,19 @@
     box-sizing: border-box;
 }
 
+i {
+    cursor: pointer;
+}
+
+.fa-align-right {
+    margin-left: 50px;
+}
+
+.switch-line {
+    height: 30px;
+    align-self: center
+}
+
 /* GRID CONTAINER */
 
 .grid-container {
