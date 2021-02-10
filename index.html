@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Meme Genrator</title>
+</head>
+<body onload="init()">
+    <header></header>
+    <section class="gallery grid-container">
+    </section>
+
+    <section class="meme-container hidden flex center column">
+        <button class="back-to-galeery" onclick="toggleView()">Back to gallery</button>
+        <canvas class="meme-canvas">
+        </canvas>
+        <div class="canvas-controllers flex space-around">
+        <table>
+            <tr><td>Text:</td><td><input type="text" data-index="0" data-property="line" placeholder="Your Text" oninput="changeTxt(this)"></td></tr>
+            <tr><td>Text Size:</td><td><input type="range" value="40" min="10" step="2" data-index="0" data-property="size" oninput="setSize(this)"></td></tr>
+            <tr><td>X:</td><td><input type="number" value="150" min="0" step="5" data-index="0" data-property="x" oninput="setCoord(this)"></td></tr>
+            <tr><td>Y:</td><td><input type="number" value="150" min="0" step="5" data-index="0" data-property="y" oninput="setCoord(this)"></td></tr>
+        </table>
+        <button class="switch-line" onclick="onSwitchLines()">Switch Line</button>
+        <table>
+            <tr><td>Text:</td><td><input type="text" data-index="1" data-property="line" placeholder="Your Text" oninput="changeTxt(this)"></td></tr>
+            <tr><td>Text Size:</td><td><input type="range" value="40" min="10" step="2" data-index="1" data-property="size" oninput="setSize(this)"></td></tr>
+            <tr><td>X:</td><td><input type="number" value="150" min="0" step="5" data-index="1" data-property="x" oninput="setCoord(this)"></td></tr>
+            <tr><td>Y:</td><td><input type="number" value="150" min="0" step="5" data-index="1" data-property="y" oninput="setCoord(this)"></td></tr>
+        </table>
+    </div>
+    </div>
+    </section>
+
+    <script src="js/img-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+</html>

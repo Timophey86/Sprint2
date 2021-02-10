@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
+/* GRID CONTAINER */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.grid-container>img {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.grid-container>img:hover {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    
+}
+
+.gallery.hidden {
+    display: none;
+}
+
+
+/* MEME CONTAINERS */
+
+.meme-container.hidden {
+    display: none;
+    border: 1px solid black;
+}
+
+.canvas-container {
+    width: 400px;
+    height: 400px;
+}
+
+.meme-canvas {
+    height: 400px;
+    width: 400px;
+}
+
+table {
+    margin-left: 10px;
+}
+
+.switch-line {
+    margin-left: 10px;
+}
+
+/* HELPERS */
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.flex.center {
+    justify-content: center;
+    align-items: center;
+}
