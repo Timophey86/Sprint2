@@ -8,35 +8,57 @@
     <title>Meme Genrator</title>
 </head>
 <body onload="init()">
-    <header></header>
-    <section class="gallery grid-container">
+    <header class="main-header">
+        <div class="header flex main-container space-between">
+            <h2 class="logo">memegen</h2>
+            <ul class="clean-list flex space-between">
+                <li class="flex center" onclick="toggleView()">Gallery</li>
+                <li class="flex center">About</li>
+            </ul>
+        </div> 
+    </header>
+<div class="gallery-container">
+    <section class="gallery grid-container main-container">
     </section>
-
-    <section class="meme-container hidden flex center column">
-        <button class="back-to-galeery" onclick="toggleView()">Back to gallery</button>
+    <section class="meme-container hidden flex center main-container">
         <canvas class="meme-canvas">
         </canvas>
         <div class="canvas-controllers flex space-around">
         <table>
-            <tr><td><i onclick="deleteTxt()" class="fas fa-eraser"></i></td><td><i onclick="newTxtBtnClicked()" class="fas fa-plus-circle"></i></td></tr>
-            <tr><td>Text:</td><td><input type="text" data-index="0" data-property="line" placeholder="Your Text" oninput="changeTxt(this)"></td></tr>
-            <tr><td>Text Size:</td><td><input type="range" value="40" min="10" step="2" data-index="0" data-property="size" oninput="setSize(this)"></td></tr>
-            <tr><td>X:</td><td><input type="number" value="150" min="0" step="5" data-index="0" data-property="x" oninput="setCoord(this)"></td></tr>
-            <tr><td>Y:</td><td><input type="number" value="150" min="0" step="5" data-index="0" data-property="y" oninput="setCoord(this)"></td></tr>
+            <tr><td class="icons"><i onclick="deleteTxt()" class="fas fa-eraser"></i><i onclick="onSwitchLines()" class="fas fa-exchange-alt"></i><i onclick="newTxtBtnClicked()" class="fas fa-plus-circle"></i></td>
+            </tr>
+            <tr><td class="icons"><i data-direction="left" onclick="alignText(this)" class="fas fa-align-left"></i><i data-direction="center" onclick="alignText(this)" class="fas fa-align-center"></i><i onclick="alignText(this)" data-direction="right" class="fas fa-align-right"></i></td></tr>
+            <tr><td>Text:</td><td><input class="inputs" type="text" data-index="0" data-property="line" placeholder="Your Text" oninput="changeTxt(this)"></td></tr>
+            <tr><td>Text Size:</td><td><input class="inputs" type="range" value="40" min="10" step="2" data-index="0" data-property="size" oninput="setSize(this)"></td></tr>
+            <tr><td>X:</td><td><input class="inputs range" type="number" value="150" min="0" step="5" data-index="0" data-property="x" oninput="setCoord(this)"></td></tr>
+            <tr><td>Y:</td><td><input class="inputs range" type="number" value="150" min="0" step="5" data-index="0" data-property="y" oninput="setCoord(this)"></td></tr>
             <tr><td>Color</td><td><input type="color" id="head" name="head"
                 value="#e66465" onchange="setColor(this)"></td></tr>
-            <tr><td><i data-direction="left" onclick="alignText(this)" class="fas fa-align-left"></i></td><td><i data-direction="center" onclick="alignText(this)" class="fas fa-align-center"></i><i onclick="alignText(this)" data-direction="right" class="fas fa-align-right"></i></td><td></td></tr>
+            <tr><td>Font</td><td><select onchange="setFont(this)" name="font" id="font">
+                <option value="impact">Impact</option>
+                <option value="montserrat">Montserrat</option>
+              </select></td></tr>
         </table>
-        <button class="switch-line" onclick="onSwitchLines()">Switch Line</button>
-        <!-- <table>
-            <tr><td>Text:</td><td><input type="text" data-index="1" data-property="line" placeholder="Your Text" oninput="changeTxt(this)"></td></tr>
-            <tr><td>Text Size:</td><td><input type="range" value="40" min="10" step="2" data-index="1" data-property="size" oninput="setSize(this)"></td></tr>
-            <tr><td>X:</td><td><input type="number" value="150" min="0" step="5" data-index="1" data-property="x" oninput="setCoord(this)"></td></tr>
-            <tr><td>Y:</td><td><input type="number" value="150" min="0" step="5" data-index="1" data-property="y" oninput="setCoord(this)"></td></tr>
-        </table> -->
     </div>
     </div>
     </section>
+</div>
+
+<footer>
+    <div class="main-footer flex center column">
+    <h2 class="logo">memegen</h2>
+    <small>No rights reserved 2021</small>
+    <ui class="social-links flex"
+    ><li class="facebook flex">
+      <img src="img/Social Icons/facebook.png" alt="" />
+    </li>
+    <li class="twitter flex"><img src="img/Social Icons/twitter.png" alt="" /></li>
+    <li class="dribble flex"><img src="img/Social Icons/dribble.png" alt="" /></li>
+  </ui>
+</div>
+</footer>
+
+
 
     <script src="js/img-service.js"></script>
     <script src="js/meme-service.js"></script>

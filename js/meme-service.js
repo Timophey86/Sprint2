@@ -4,6 +4,7 @@ var gCtx;
 var gCurrMemeIdx;
 var gCurrLine = 0;
 var gNumOfLines = 2;
+var gMemeFont = "impact"
 var gMemes = [];
 // var gMeme = [
 //   {
@@ -96,28 +97,32 @@ function drawImageScaled(img, ctx) {
 }
 
 function drawCanvas(imgId) {
-  var lineNum = 0
+  var lineNum = 0;
   gCtx.drawImage(gImgObj, 0, 0);
   var meme = gMemes.find(function (meme) {
     return imgId === meme.selectedImgId;
   });
   meme.lines.forEach(function (txt) {
-    if (lineNum === gCurrLine) {drawTxt(txt, true);}
-    else {drawTxt(txt);}
-    lineNum++
+    if (lineNum === gCurrLine) {
+      drawTxt(txt, true);
+    } else {
+      drawTxt(txt);
+    }
+    lineNum++;
   });
 }
 
 function drawTxt(txt, outline) {
+  txt.fontFamily = gMemeFont
   if (outline) {
-  gCtx.font = txt.size + "px" + " " + txt.fontFamily;
-  gCtx.textAlign = txt.align;
-  gCtx.fillStyle = txt.color;
-  gCtx.strokeStyle = "white";
-  gCtx.lineWidth = 1;
-  gCtx.fillText(txt.txt, txt.x, txt.y);
-  gCtx.strokeText(txt.txt, txt.x, txt.y);}
-  else {
+    gCtx.font = txt.size + "px" + " " + txt.fontFamily;
+    gCtx.textAlign = txt.align;
+    gCtx.fillStyle = txt.color;
+    gCtx.strokeStyle = "white";
+    gCtx.lineWidth = 1;
+    gCtx.fillText(txt.txt, txt.x, txt.y);
+    gCtx.strokeText(txt.txt, txt.x, txt.y);
+  } else {
     gCtx.font = txt.size + "px" + " " + txt.fontFamily;
     gCtx.textAlign = txt.align;
     gCtx.fillStyle = txt.color;
@@ -190,15 +195,15 @@ function alignText(elAlign) {
 function deleteTxt() {
   var meme = gMemes[gCurrMemeIdx];
   meme.lines.splice(gCurrLine, 1);
-  gCurrLine=0
+  gCurrLine = 0;
   drawCanvas(gCurrMemeIdx);
 }
 
 function newTxtBtnClicked() {
   var meme = gMemes[gCurrMemeIdx];
   meme.lines.push(_createText());
-  gCurrLine=0
-  gNumOfLines +=1
+  gCurrLine = 0;
+  gNumOfLines += 1;
   drawCanvas(gCurrMemeIdx);
 }
 
@@ -215,7 +220,7 @@ function _createText() {
 
 //SWITCH LINES
 function onSwitchLines() {
-  if (gCurrLine >= gNumOfLines-1) {
+  if (gCurrLine >= gNumOfLines - 1) {
     gCurrLine = 0;
   } else {
     gCurrLine++;
