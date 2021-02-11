@@ -1,4 +1,5 @@
 "use strict";
+var gCanvas
 var gImgObj;
 var gCtx;
 var gCurrMemeIdx;
@@ -229,8 +230,16 @@ function onSwitchLines() {
   drawCanvas(gCurrMemeIdx);
 }
 
+// Download Canvas
+function downloadCanvas(elDownload) {
+  var canvas = document.querySelector(".meme-canvas")
+  elDownload.href = canvas.toDataURL()
+  elDownload.download = "canvas-image.png"
+} 
+
 //Toggle between grid and meme editor
 function toggleView() {
   document.querySelector(".meme-container").classList.toggle("hidden");
   document.querySelector(".gallery").classList.toggle("hidden");
+  document.querySelector(".search-bar").classList.toggle("hidden");
 }

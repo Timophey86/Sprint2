@@ -11,12 +11,24 @@
     <header class="main-header">
         <div class="header flex main-container space-between">
             <h2 class="logo">memegen</h2>
-            <ul class="clean-list flex space-between">
+            <ul class="nav clean-list flex space-between">
                 <li class="flex center" onclick="toggleView()">Gallery</li>
                 <li class="flex center">About</li>
             </ul>
+            <button class="menu-btn" onclick="toglleMenu()">☰</button>
         </div> 
     </header>
+<div class="search-bar main-container flex space-between align-items">
+    <div class="search">
+        <input class="search-input" type="text" placeholder="Search keyword..">
+    <i onclick="searchMemes()" class="fas fa-search"></i>
+    <div onclick="closeModal(this)" class="search-modal">
+        <span class="close">&times;</span>
+        Try another keyword..
+      </div>
+    </div>
+    <div class="keywords"></div>
+</div>
 <div class="gallery-container">
     <section class="gallery grid-container main-container">
     </section>
@@ -38,6 +50,7 @@
                 <option value="impact">Impact</option>
                 <option value="montserrat">Montserrat</option>
               </select></td></tr>
+              <tr><td><a onclick="downloadCanvas(this)" href="">Download <i class="fas fa-file-download"></i></a></td></tr>
         </table>
     </div>
     </div>
