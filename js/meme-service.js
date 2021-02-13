@@ -248,10 +248,12 @@ function toggleView() {
   document.querySelector(".gallery").classList.add("hidden");
   document.querySelector(".search-bar").classList.add("hidden");
   document.querySelector(".search-input").value = "";
+  gDisplayedImgs = 18;
   resetKeywords();
 }
 
 function backToGallery() {
+  console.log(gDisplayedImgs)
   //In case images were filtered by the search and gallery was pressed
   if (gDisplayedImgs < gImgs.length) {
     renderImgs(gImgs);
@@ -260,6 +262,7 @@ function backToGallery() {
     document.querySelector(".meme-container").classList.add("hidden");
     document.querySelector(".gallery").classList.remove("hidden");
     document.querySelector(".search-bar").classList.remove("hidden");
+    renderImgs(gImgs);
   }
   document.querySelector(".search-input").value = "";
   resetKeywords();
