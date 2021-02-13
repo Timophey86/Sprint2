@@ -1,7 +1,8 @@
 "use strict";
 
 var gImgId = 0;
-// var gKeywords = { happy: 12, "funny puk": 1 };
+var gSearchTermsToShow = 5;
+var gImgs = [];
 var gImgUrls = [];
 var gKeyword = [
   "mad",
@@ -23,12 +24,7 @@ var gKeyword = [
   "putin",
   "visionary",
 ];
-// var gImgs = [
-//   { id: 0, url: "img/1.jpg", keywords: ["mad"] },
-//   { id: 1, url: "img/2.jpg", keywords: ["cute"] },
-// ];
 
-var gImgs = [];
 
 function createImgs() {
   var numOfImgs = gImgUrls.length;
@@ -44,7 +40,6 @@ function _createImg() {
     keywords: [gKeyword[gImgId]],
   };
   gImgId++;
-  // console.log(img.id);
   return img;
 }
 
@@ -68,17 +63,41 @@ function renderImgs(imgs) {
 }
 renderKeywords();
 
-function renderKeywords(wordAmount = 5) {
+function renderKeywords() {
   var filteredKeywords = gKeyword.filter(function (item, pos) {
-      console.log(gKeyword.indexOf(item))
     return gKeyword.indexOf(item) === pos;
   });
-  var strHtml = "";
-  for (var i = 0; i < wordAmount; i++) {
-    strHtml += `<span>${filteredKeywords[i]}</span> `;
+  var strHtml = "Keywords:";
+  for (var i = 0; i < filteredKeywords.length; i++) {
+    if (i > gSearchTermsToShow) {
+      strHtml += `<span class="search-term hidden" onclick="searchMemes(event,this)" style="font-size: 16px;">${filteredKeywords[i]}</span> `;
+    } else {
+      strHtml += `<span class="search-term" onclick="searchMemes(event,this)" style="font-size: 16px;">${filteredKeywords[i]}</span> `;
+    }
   }
-  strHtml += " <span>more..</span>";
-  console.log(strHtml);
+  strHtml += ` <span class="more" onclick="expandKeywords()">more...</span>`;
   var elKeywords = document.querySelector(".keywords");
   elKeywords.innerHTML = strHtml;
 }
+
+function expandKeywords() {
+  var filteredKeywords = gKeyword.filter(function (item, pos) {
+    return gKeyword.indexOf(item) === pos;
+  });
+  if (gSearchTermsToShow < filteredKeywords.length) {
+    gSearchTermsToShow += 3;
+    renderKeywords();
+    console.log("terms to show ", gSearchTermsToShow);
+    if (gSearchTermsToShow >= filteredKeywords.length) {
+      document.querySelector(".more").classList.add("hidden");
+    }
+  }
+}
+
+function resetKeywords() {
+  document.querySelector(".more").classList.remove("hidden");
+  gSearchTermsToShow = 5;
+  renderKeywords();
+}
+
+

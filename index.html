@@ -13,8 +13,13 @@
             <h2 class="logo">memegen</h2>
             <ul class="nav clean-list flex space-between">
                 <li class="flex center" onclick="toggleView()">Gallery</li>
-                <li class="flex center">About</li>
+                <li class="flex center" onclick="toggleAbout()">About</li>
             </ul>
+            <div class="about-modal hidden">
+                <h2>Timopheis meme generator!</h2>
+                <p>This a simple meme generator for your enjoyment. Click on some pictures, try out the fetures.</p>
+                <span onclick="toggleAbout()">Close</span>
+            </div>
             <button class="menu-btn" onclick="toglleMenu()">☰</button>
         </div> 
     </header>
@@ -35,7 +40,8 @@
     <section class="meme-container hidden flex center main-container">
         <canvas class="meme-canvas">
         </canvas>
-        <div class="canvas-controllers flex space-around">
+        <div class="canvas-controllers flex column">
+            <div class="emoji-tray"><span onclick="addEmoji(this)" class="emoji">❤️</span> <span onclick="addEmoji(this)" class="emoji">🔥</span> <span onclick="addEmoji(this)" class="emoji">🧨</span> <span onclick="addEmoji(this)" class="emoji">👓</span> <span onclick="addEmoji(this)" class="emoji">👺</span> <span onclick="addEmoji(this)" class="emoji">💋</span> <span onclick="addEmoji(this)" class="emoji">🐸</span> <span onclick="addEmoji(this)" class="emoji">🕷️</span> <span onclick="addEmoji(this)" class="emoji">🤘</span> <span onclick="addEmoji(this)" class="emoji">🥶</span> <span onclick="addEmoji(this)" class="emoji">🤓</span> <span onclick="addEmoji(this)" class="emoji">😎</span></div>
         <table>
             <tr><td class="icons"><i onclick="deleteTxt()" class="fas fa-eraser"></i><i onclick="onSwitchLines()" class="fas fa-exchange-alt"></i><i onclick="newTxtBtnClicked()" class="fas fa-plus-circle"></i></td>
             </tr>
@@ -50,7 +56,17 @@
                 <option value="impact">Impact</option>
                 <option value="montserrat">Montserrat</option>
               </select></td></tr>
-              <tr><td><a onclick="downloadCanvas(this)" href="">Download <i class="fas fa-file-download"></i></a></td></tr>
+              <tr><td><a onclick="downloadCanvas(this)" href="">Download <i class="fas fa-file-download"></i></a></td>
+                <td>
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="btn" type="submit">Publish <i class="fas fa-share-alt"></i></button>
+                        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fca-upload.com%2Fhere%2FserveForShare.php%3Fid%3D60280353cf22a&amp;t=http%3A%2F%2Fca-upload.com%2Fhere%2FserveForShare.php%3Fid%3D60280353cf22a" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fca-upload.com%2Fhere%2FserveForShare.php%3Fid%3D60280353cf22a&amp;t=http%3A%2F%2Fca-upload.com%2Fhere%2FserveForShare.php%3Fid%3D60280353cf22a'); return false;">
+
+                         </a> 
+                        <div class="share-container"></div>
+                      </form>
+                </td></tr>
         </table>
     </div>
     </div>
