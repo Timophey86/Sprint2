@@ -8,9 +8,8 @@ var gNumOfLines = 2;
 var gMemeFont = "impact";
 var gMemes = [];
 var currMeme;
-var gDisplayedImgs = 18
+var gDisplayedImgs = 18;
 var gDragging = false;
-
 
 //Render Memes Pages
 function createMemes() {
@@ -232,23 +231,44 @@ function downloadCanvas(elDownload) {
 }
 
 //Toggle between grid and meme editor
+// function toggleView() {
+//   if (gDisplayedImgs < gImgs.length) {
+//     renderImgs(gImgs);
+//     gDisplayedImgs = 18;
+//   } else {
+//     document.querySelector(".meme-container").classList.toggle("hidden");
+//     document.querySelector(".gallery").classList.toggle("hidden");
+//     document.querySelector(".search-bar").classList.toggle("hidden");
+//   }
+//   document.querySelector(".search-input").value = "";
+//   resetKeywords();
+// }
 function toggleView() {
-  if (gDisplayedImgs<gImgs.length) {
+  document.querySelector(".meme-container").classList.remove("hidden");
+  document.querySelector(".gallery").classList.add("hidden");
+  document.querySelector(".search-bar").classList.add("hidden");
+  document.querySelector(".search-input").value = "";
+  resetKeywords();
+}
+
+function backToGallery() {
+  //In case images were filtered by the search and gallery was pressed
+  if (gDisplayedImgs < gImgs.length) {
     renderImgs(gImgs);
-    gDisplayedImgs = 18
+    gDisplayedImgs = 18;
   } else {
-  document.querySelector(".meme-container").classList.toggle("hidden");
-  document.querySelector(".gallery").classList.toggle("hidden");
-  document.querySelector(".search-bar").classList.toggle("hidden");}
-  document.querySelector(".search-input").value= ""
-  resetKeywords()
+    document.querySelector(".meme-container").classList.add("hidden");
+    document.querySelector(".gallery").classList.remove("hidden");
+    document.querySelector(".search-bar").classList.remove("hidden");
+  }
+  document.querySelector(".search-input").value = "";
+  resetKeywords();
 }
 
 //Drag And Drop The TXT
 var gDragging = false;
 var startX;
 var startY;
-
 
 function myDown(e) {
   console.log(e);
@@ -299,7 +319,7 @@ function myMove(e) {
     var dx = mx - startX;
     var dy = my - startY;
     for (var i = 0; i < currMeme.lines.length; i++) {
-      var line = currMeme.lines[i]
+      var line = currMeme.lines[i];
       if (line.isDragging) {
         line.x += dx;
         line.y += dy;

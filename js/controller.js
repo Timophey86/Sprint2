@@ -65,6 +65,8 @@ function toggleAbout () {
   elAboutModal.classList.toggle("hidden")
 }
 
+
+
 // SHARE IMG FUNCTION 
 function uploadImg(elForm, ev) {
   ev.preventDefault();
