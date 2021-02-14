@@ -25,7 +25,6 @@ var gKeyword = [
   "visionary",
 ];
 
-
 function createImgs() {
   var numOfImgs = gImgUrls.length;
   for (var i = 0; i < numOfImgs - 1; i++) {
@@ -57,22 +56,30 @@ function renderImgs(imgs) {
       `;
     })
     .join(" ");
+  strHtml += `   <label for="">
+    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" style="display: none;"/>
+    <img src="img/Custom Pic.png" alt="" onclick="callInput()">
+  </label>`;
 
   document.querySelector(".gallery").innerHTML = strHtml;
   gImgId = 0;
 }
 renderKeywords();
 
-function renderKeywords() {
+function renderKeywords(id) {
   var filteredKeywords = gKeyword.filter(function (item, pos) {
     return gKeyword.indexOf(item) === pos;
   });
+  var idx = parseInt(id)
   var strHtml = "Keywords:";
   for (var i = 0; i < filteredKeywords.length; i++) {
     if (i > gSearchTermsToShow) {
-      strHtml += `<span class="search-term hidden" onclick="searchMemes(event,this)" style="font-size: 16px;">${filteredKeywords[i]}</span> `;
+      strHtml += `<span id=${i} class="search-term hidden" onclick="searchMemes(event,this)" style="font-size: 16px;">${filteredKeywords[i]}</span> `;
+    } 
+    else if (i === idx) {
+      strHtml += `<span id=${i} class="search-term" onclick="searchMemes(event,this)" style="font-size: 22px;">${filteredKeywords[i]}</span> `;
     } else {
-      strHtml += `<span class="search-term" onclick="searchMemes(event,this)" style="font-size: 16px;">${filteredKeywords[i]}</span> `;
+      strHtml += `<span id=${i} class="search-term" onclick="searchMemes(event,this)" style="font-size: 16px;">${filteredKeywords[i]}</span> `;
     }
   }
   strHtml += ` <span class="more" onclick="expandKeywords()">more...</span>`;
@@ -94,10 +101,8 @@ function expandKeywords() {
   }
 }
 
-function resetKeywords() {
+function resetKeywords(id) {
   document.querySelector(".more").classList.remove("hidden");
   gSearchTermsToShow = 5;
-  renderKeywords();
+  renderKeywords(id);
 }
-
-

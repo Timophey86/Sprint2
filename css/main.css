@@ -171,6 +171,17 @@ h2 {
   padding: 10px;
 }
 
+.grid-container label img {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.grid-container label img:hover   {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
 .grid-container > img {
   display: block;
   width: 100%;
